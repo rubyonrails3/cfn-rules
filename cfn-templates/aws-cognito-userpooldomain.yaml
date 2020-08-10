@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Cognito User Pool Domain
+Parameters:
+  userpoolid:
+    Type: String
+    Description: The user pool ID for the user pool
+  domain:
+    Type: String
+    Description: Domain
+Resources:
+  awscognitouserpooldomain:
+    Type: AWS::Cognito::UserPoolDomain
+    Properties: 
+      UserPoolId: !Ref userpoolid
+      Domain: !Ref domain

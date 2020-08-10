@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create API Gateway Documentation Version
+Parameters:
+  documentationversion:
+    Type: String
+    Description: Documentation Version
+  restapiid:
+    Type: String
+    Description: Rest API ID
+Resources:
+  awsapigwdocver:
+    Type: AWS::ApiGateway::DocumentationVersion
+    Properties:
+      DocumentationVersion: !Ref documentationversion
+      RestApiId: !Ref restapiid

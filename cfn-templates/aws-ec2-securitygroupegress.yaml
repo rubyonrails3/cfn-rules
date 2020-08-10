@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create EC2 Security Group Egress
+Parameters:
+  groupid:
+    Type: String
+    Description: Group ID
+  ipprotocol:
+    Type: String
+    Description: IP Protocol
+Resources:
+  awsec2sgegress:
+    Type: AWS::EC2::SecurityGroupEgress
+    Properties: 
+        GroupId: !Ref groupid
+        IpProtocol: !Ref ipprotocol

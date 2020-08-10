@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create API Gateway Method
+Parameters:
+  httpmethod:
+    Type: String
+    Description: HTTP Method
+Resources:
+  awsapigwmethod:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      HttpMethod: !Ref httpmethod

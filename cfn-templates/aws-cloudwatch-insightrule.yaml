@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Cloud Watch Insight Rule
+Parameters:
+  rulebody:
+    Type: String
+    Description: Cloud Watch Insight Rule Body
+  rulename:
+    Type: String
+    Description: CLoud Watch Insight Rule Name
+  rulestate:
+    Type: String
+    Description: Cloud Watch Insight Rule State
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  awscloudwatchinsightrule:
+    Type: AWS::CloudWatch::InsightRule
+    Properties: 
+      RuleBody: !Ref rulebody
+      RuleName: !Ref rulename
+      RuleState: !Ref rulestate
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

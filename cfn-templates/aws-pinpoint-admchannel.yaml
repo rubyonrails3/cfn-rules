@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Pinpoint ADM Channel
+Parameters:
+  applicationid:
+    Type: String
+    Description: The unique identifier for the application
+  clientid:
+    Type: String
+    Description: Client ID
+  clientsecret:
+    Type: String
+    Description: Client Secret
+Resources:
+  pinpointadmchannel:
+    Type: AWS::Pinpoint::ADMChannel
+    Properties:
+      ApplicationId: !Ref applicationid
+      ClientId: !Ref clientid
+      ClientSecret: !Ref clientsecret

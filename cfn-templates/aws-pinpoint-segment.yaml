@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Pinpoint Segment
+Parameters:
+  name:
+    Type: String
+    Description: The name of the segment
+  applicationid:
+    Type: String
+    Description: Application ID
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  pinpointpushtemplate:
+    Type: AWS::Pinpoint::Segment
+    Properties:
+      Name: !Ref name
+      ApplicationId: !Ref applicationid
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

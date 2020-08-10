@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Lambda Event Source Mapping
+Parameters:
+  functionname:
+    Type: String
+    Description: Function Name
+  eventsourcearn:
+    Type: String
+    Description: ARN of event source
+Resources:
+  lambdeventsourcemapping:
+    Type: AWS::Lambda::EventSourceMapping
+    Properties:
+      FunctionName: !Ref functionname
+      EventSourceArn: !Ref eventsourcearn

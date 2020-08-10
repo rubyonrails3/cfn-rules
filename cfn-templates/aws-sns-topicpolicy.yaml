@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create SNS Topic Policy
+Parameters:
+  policydocument:
+    Type: String
+    Description: A Policy Document
+  topics:
+    Type: String
+    Description: ARN of Topics
+Resources:
+  snstopicpolicy:
+    Type: AWS::SNS::TopicPolicy
+    Properties:
+      PolicyDocument: !Ref policydocument
+      Topics: !Ref topics

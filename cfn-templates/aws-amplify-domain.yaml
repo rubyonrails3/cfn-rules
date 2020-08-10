@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Amplify Domain
+Parameters:
+  appid:
+    Type: String
+    Description: Amplify App ID  
+  domainname:
+    Type: String
+    Description: Amplify App Doamin Name
+  branchname:
+    Type: String
+    Description: Amplify App Domain branch name
+Resources:
+  awsamplifydomain:   
+    Type: AWS::Amplify::Domain
+    Properties: 
+      AppId: !Ref appid
+      DomainName: !Ref domainname
+      SubDomainSettings: 
+        - BranchName: !Ref branchname

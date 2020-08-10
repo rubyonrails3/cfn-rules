@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Cognito User Pool UICustomization Attachment
+Parameters:
+  clientid:
+    Type: String
+    Description: Client ID
+  userpoolid:
+    Type: String
+    Description: The user pool ID
+Resources:
+  awscognitoUserPoolUICustomizationAttachment:
+    Type: AWS::Cognito::UserPoolUICustomizationAttachment
+    Properties:
+      ClientId: !Ref clientid
+      UserPoolId: !Ref userpoolid

@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Auto Scaling Group
+Parameters:
+  maxsize:
+    Type: String
+    Description: Auto Scaling Group Max Size
+  minsize:
+    Type: String
+    Description: Auto Scaling Group Min Size
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  awsautoscalinggroup:
+    Type: AWS::Athena::WorkGroup
+    Properties: 
+        MaxSize: !Ref maxsize
+        MinSize: !Ref minsize
+        Tags:
+        - Key: COSTCENTER
+          Value: !Ref costCenterValue
+        - Key: STACKNAME
+          Value: !Ref stackNameValue

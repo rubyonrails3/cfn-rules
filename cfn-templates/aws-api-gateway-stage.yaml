@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create API Gateway Stage
+Parameters:
+  restapiid:
+    Type: String
+    Description: Rest API ID
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  awsapigwstage:
+    Type: AWS::ApiGateway::Stage
+    Properties: 
+        RestApiId: !Ref restapiid
+        Tags:
+        - Key: COSTCENTER
+          Value: !Ref costCenterValue
+        - Key: STACKNAME
+          Value: !Ref stackNameValue

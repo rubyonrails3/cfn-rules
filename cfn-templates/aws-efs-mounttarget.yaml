@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create EFS Mount Target
+Parameters:
+  filesystemid:
+    Type: String
+    Description: File System ID
+  securitygroup:
+    Type: String
+    Description: List of Security Group
+  subnetid:
+    Type: String
+    Description: Subnet ID
+Resources:
+  awsefsmounttarget:
+    Type: AWS::EFS::MountTarget
+    Properties:
+      FileSystemId: !Ref filesystemid
+      SecurityGroups: !Ref securitygroup
+      SubnetId: !Ref subnetid

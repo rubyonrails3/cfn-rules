@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Logs Destination
+Parameters:
+  destinationname:
+    Type: String
+    Description: Destination Name
+  destinationpolicy:
+    Type: String
+    Description: Destination Policy
+  rolearn:
+    Type: String
+    Description: ARN of Role
+  targetarn:
+    Type: String
+    Description: ARN of Target
+Resources:
+  logsdestination:
+    Type: AWS::Logs::Destination
+    Properties:
+      DestinationName: !Ref destinationname
+      DestinationPolicy: !Ref destinationpolicy
+      RoleArn: !Ref rolearn
+      TargetArn: !Ref targetarn

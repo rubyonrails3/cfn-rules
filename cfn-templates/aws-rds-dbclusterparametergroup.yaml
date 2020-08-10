@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create RDS DB CLuster Parameter Group
+Parameters:
+  description:
+    Type: String
+    Description: description for this DB cluster parameter group
+  family:
+    Type: String
+    Description: The DB cluster parameter group family name
+  parameters:
+    Type: String
+    Description: Provides a list of parameters for the DB cluster parameter group
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  rdsdbclusterparametergroup:
+    Type: AWS::RDS::DBClusterParameterGroup
+    Properties:
+      Description: !Ref description
+      Family: !Ref family
+      Parameters: !Ref parameters
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

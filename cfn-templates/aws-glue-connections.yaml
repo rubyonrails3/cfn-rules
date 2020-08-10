@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Glue Connection
+Parameters:
+  catalogid:
+    Type: String
+    Description: AWS Account ID
+  connectionproperties:
+    Type: String
+    Description: Connectiobn Properties in Json
+  connectiontype:
+    Type: String
+    Description: Connection Type
+Resources:
+  glueconnection:
+    Type: AWS::Glue::Connection
+    Prperties:
+      CatalogId: !Ref catalogid
+      ConnectionInput:
+      - ConnectionProperties: !Ref connectionproperties
+        ConnectionType: !Ref connectiontype

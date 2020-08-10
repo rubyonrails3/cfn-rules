@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Cognito User Pool User To Group Attachment
+Parameters:
+  userpoolid:
+    Type: String
+    Description: The user pool ID
+  groupname:
+    Type: String
+    Description: The Group Name
+  username:
+    Type: String
+    Description: The User Name
+Resources:
+  awscognitoUserPoolUserToGroupAttachment:
+    Type: AWS::Cognito::UserPoolUserToGroupAttachment
+    Properties:
+      UserPoolId: !Ref userpoolid
+      GroupName: !Ref groupname
+      Username: !Ref username

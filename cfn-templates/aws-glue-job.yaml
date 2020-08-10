@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Glue Job
+Parameters:
+  jobname:
+    Type: String
+    Description: Name of glue job
+  name:
+    Type: String
+    Description: Name of job command
+  role:
+    Type: String
+    Description: IAM Role ARN
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  gluejob:
+    Type: AWS::Glue::Job
+    Properties:
+      Name: !Ref jobname
+      Role: !Ref role
+      Command:
+      - Name: !Ref name
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

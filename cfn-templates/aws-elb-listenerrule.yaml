@@ -1,0 +1,42 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create ELB Listener Rule
+Parameters:
+  listenerarn:
+    Type: String
+    Description: ARN of listener
+  priority:
+    Type: Number
+    Description: Rule Priority
+  type:
+    Type: String
+    Description: Type of Action
+    AllowedValues:
+    - authenticate-cognito
+    - authenticate-oidc
+    - fixed-response
+    - forward
+    - redirect
+  field:
+    Type: String
+    Description: The field in the HTTP request
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  elblistenerrule:
+    Type: AWS::ElasticLoadBalancingV2::ListenerRule
+    Properties:
+      ListenerArn: !Ref listenerarn
+      Priority: !Ref priority
+      Actions:
+      - Type: !Ref type
+      Conditions:
+      - Field: !Ref field
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

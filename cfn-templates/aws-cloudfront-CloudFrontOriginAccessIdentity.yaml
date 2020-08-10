@@ -1,0 +1,12 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create CloudFront Origin Access Identity
+Parameters:
+  comment:
+    Type: String
+    Description: Comment
+Resources:
+  awsCloudFrontOriginAccessIdentity:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+        CloudFrontOriginAccessIdentityConfig:
+        - Comment: !Ref comment

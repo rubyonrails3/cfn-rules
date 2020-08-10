@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Glue trigger
+Parameters:
+  name:
+    Type: String
+    Description: Name of Work Flow
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+  type:
+    Type: String
+    Description: Trigger Type
+  jobname:
+    Type: String
+    Description: Job Name
+Resources:
+  gluetrigger:
+    Type: AWS::Glue::Trigger
+    Properties:
+      Type: !Ref type
+      Name: !Ref name
+      Actions:
+      - JobName: !Ref jobname
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

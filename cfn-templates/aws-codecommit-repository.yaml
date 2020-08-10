@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create CodeCommit Repository
+Parameters:
+  repositoryname:
+    Type: String
+    Description: Name of Repository
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  awscodecommitrepository:
+    Type: AWS::CodeCommit::Repository
+    Properties: 
+        RepositoryName: !Ref repositoryname
+        Tags:
+        - Key: COSTCENTER
+          Value: !Ref costCenterValue
+        - Key: STACKNAME
+          Value: !Ref stackNameValue

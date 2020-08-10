@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Pinpoint APNS VOIP Channel
+Parameters:
+  applicationid:
+    Type: String
+    Description: The unique identifier for the application
+Resources:
+  pinpointapnsvoipchannel:
+    Type: AWS::Pinpoint::APNSVoipChannel
+    Properties:
+      ApplicationId: !Ref applicationid

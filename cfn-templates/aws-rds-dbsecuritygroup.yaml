@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create RDS DB Security Group
+Parameters:
+  groupdescription:
+    Type: String
+    Description: Provides the description of the DB Security Group
+  cidrip:
+    Type: String
+    Description: The IP range to authorize
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  rdsdbsecuritygroup:
+    Type: AWS::RDS::DBSecurityGroup
+    Properties:
+      GroupDescription: !Ref groupdescription
+      DBSecurityGroupIngress:
+      - CIDRIP: !Ref cidrip
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

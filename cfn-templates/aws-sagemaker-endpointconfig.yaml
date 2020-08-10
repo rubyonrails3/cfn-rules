@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Sagemaker Endpoint Config
+Parameters:
+  initialinstancecount:
+    Type: Number
+    Description: Initial Instance Count
+  initialvariantweight:
+    Type: Number
+    Description: Initial Variant Weight
+  instancetype:
+    Type: String
+    Description: Instance Type
+  modelname:
+    Type: String
+    Description: Model Name
+  variantname:
+    Type: String
+    Description: The name of the production variant
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  sagemakerendpointconfig:
+    Type: AWS::SageMaker::EndpointConfig
+    Properties:
+      ProductionVariants:
+      - InitialInstanceCount: !Ref initialinstancecount
+        InitialVariantWeight: !Ref initialvariantweight
+        InstanceType: !Ref instancetype
+        ModelName: !Ref modelname
+        VariantName: !Ref variantname
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

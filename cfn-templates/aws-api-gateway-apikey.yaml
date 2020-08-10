@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create API Gateway API Key
+Parameters:
+  name:
+    Type: String
+    Description: API Gateway API Key Name
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  awsapigwapikey:
+    Type: AWS::ApiGateway::ApiKey
+    Properties:
+      Name: !Ref name
+      Tags:
+        - Key: COSTCENTER
+          Value: !Ref costCenterValue
+        - Key: STACKNAME
+          Value: !Ref stackNameValue

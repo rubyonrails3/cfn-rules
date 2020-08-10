@@ -1,0 +1,41 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Glue ML Transform
+Parameters:
+  name:
+    Type: String
+    Description: Name of glue job
+  dbname:
+    Type: String
+    Description: DB Name
+  tablename:
+    Type: String
+    Description: Table Name
+  role:
+    Type: String
+    Description: IAM Role ARN
+  transformtype:
+    Type: String
+    Description: The type of machine learning transform
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  gluemltransform:
+    Type: AWS::Glue::MLTransform
+    Properties:
+      Name: !Ref name
+      Role: !Ref role
+      InputRecordTables:
+      - GlueTables:
+        - DatabaseName: !Ref dbname
+          TableName: !Ref tablename
+      TransformParameters:
+      - TransformType: !Ref transformtype
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

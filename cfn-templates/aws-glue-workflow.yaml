@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Glue Work Flow
+Parameters:
+  name:
+    Type: String
+    Description: Name of Work Flow
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  glueworkflow:
+    Type: AWS::Glue::Workflow
+    Properties:
+      Name: !Ref name
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

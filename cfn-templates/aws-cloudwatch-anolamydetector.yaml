@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Cloud Watch Anomaly Detector
+Parameters:
+  matrixname:
+    Type: String
+    Description: Matrix Name
+  namespace:
+    Type: String
+    Description: Name Space
+  stat:
+    Type: String
+    Description: Stat
+Resources:
+  awscloudwatchanomalydetector:
+    Type: AWS::CloudWatch::AnomalyDetector
+    Properties:
+      MetricName: !Ref matrixname
+      Namespace: !Ref namespace
+      Stat: !Ref stat

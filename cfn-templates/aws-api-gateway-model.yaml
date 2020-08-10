@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create API Gateway Model
+Parameters:
+  name:
+    Type: String
+    Description: Model Name
+  restapiid:
+    Type: String
+    Description: Rest API ID
+Resources:
+  awsapigwmodel:
+    Type: AWS::ApiGateway::Model
+    Properties:
+      Name: !Ref name
+      RestApiId: !Ref restapiid

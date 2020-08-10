@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Pinpoint APNS VOIP Sandbox Channel
+Parameters:
+  applicationid:
+    Type: String
+    Description: The unique identifier for the application
+Resources:
+  pinpointapnsvoipsandboxchannel:
+    Type: AWS::Pinpoint::APNSVoipSandboxChannel
+    Properties:
+      ApplicationId: !Ref applicationid

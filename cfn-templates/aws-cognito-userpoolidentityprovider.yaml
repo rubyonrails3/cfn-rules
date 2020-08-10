@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Cognito User Pool Identity Provider
+Parameters:
+  providername:
+    Type: String
+    Description: The identity provider name
+  providertype:
+    Type: String
+    Description: The identity provider type
+    AllowedValues:
+    - Facebook 
+    - Google 
+    - LoginWithAmazon 
+    - OIDC
+    - SAML
+    - SignInWithApple
+  userpoolid:
+    Type: String
+    Description: The user pool ID
+Resources:
+  awscognitouserpoolidentityprovider:
+    Type: AWS::Cognito::UserPoolIdentityProvider
+    Properties: 
+      ProviderName: !Ref providername
+      ProviderType: !Ref providertype
+      UserPoolId: !Ref userpoolid

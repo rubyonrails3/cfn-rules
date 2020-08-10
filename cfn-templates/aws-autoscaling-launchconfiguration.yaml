@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Auto Scaling Launch Configuration
+Parameters:
+  imageid:
+    Type: String
+    Description: Image ID
+  instancetype:
+    Type: String
+    Description: Instance Type
+Resources:
+  awsautoscalinglaunchconfiguration:
+    Type: AWS::AutoScaling::LaunchConfiguration
+    Properties:
+        ImageId: !Ref imageid
+        InstanceType: !Ref instancetype

@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create DAX Subnet Group
+Parameters:
+  subnetids:
+    Type: String
+    Description: List of Subnet IDs
+Resources:
+  awsdaxsubnetgroup:
+    Type: AWS::DAX::SubnetGroup
+    Properties:
+      SubnetIds: !Ref subnetids

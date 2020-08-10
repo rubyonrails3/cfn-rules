@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Pinpoint APP
+Parameters:
+  applicationid:
+    Type: String
+    Description: An Application ID
+  apikey:
+    Type: String
+    Description: API Key
+  secretkey:
+    Type: String
+    Description: Secret Key
+Resources:
+  pinpointbaiduchannel:
+    Type: AWS::Pinpoint::BaiduChannel
+    Properties:
+      ApplicationId: !Ref applicationid
+      ApiKey: !Ref apikey
+      SecretKey: !Ref secretkey

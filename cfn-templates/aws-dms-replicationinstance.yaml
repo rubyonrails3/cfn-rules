@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create DMS Replication Instance
+Parameters:
+  replicationinstanceclass:
+    Type: String
+    Description: Replication Instance Class
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  awsdmsreplicationinstance:
+    Type: AWS::DMS::ReplicationInstance
+    Properties: 
+        ReplicationInstanceClass: !Ref replicationinstanceclass
+        Tags:
+        - Key: COSTCENTER
+          Value: !Ref costCenterValue
+        - Key: STACKNAME
+          Value: !Ref stackNameValue

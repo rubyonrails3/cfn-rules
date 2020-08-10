@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Athena Named Query
+Parameters:
+  name:
+    Type: String
+    Description: Athena Name
+  database:
+    Type: String
+    Description: Database
+  querystring:
+    Type: String
+    Description: SQL Query Statement
+Resources:
+  awsathenanamedquery:
+    Type: AWS::Athena::NamedQuery
+    Properties:
+        Name: !Ref name
+        Database: !Ref database
+        QueryString: !Ref querystring

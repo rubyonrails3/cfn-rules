@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Pinpoint Push Template
+Parameters:
+  templatename:
+    Type: String
+    Description: Template Name
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  pinpointpushtemplate:
+    Type: AWS::Pinpoint::PushTemplate
+    Properties:
+      TemplateName: !Ref templatename
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

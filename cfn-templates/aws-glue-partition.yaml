@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Glue Partition
+Parameters:
+  catalogid:
+    Type: String
+    Description: Catalog ID
+  databasename:
+    Type: String
+    Description: Database Name
+  partitioninput:
+    Type: String
+    Description: Partition Input
+  tablename:
+    Type: String
+    Description: Table Name
+Resources:
+  gluepartition:
+    Type: AWS::Glue::Partition
+    Properties:
+      CatalogId: !Ref catalogid
+      DatabaseName: !Ref databasename
+      PartitionInput: !Ref partitioninput
+      TableName: !Ref tablename

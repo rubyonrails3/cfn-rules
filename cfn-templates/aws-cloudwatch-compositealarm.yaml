@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Cloud Watch Composite Alarm
+Parameters:
+  alarmname:
+    Type: String
+    Description: Name of Alarm
+  alarmrule:
+    Type: String
+    Description: Alarm Rule
+Resources:
+  awscloudwatchcompositealarm:
+    Type: AWS::CloudWatch::CompositeAlarm
+    Properties:
+      AlarmName: !Ref alarmname
+      AlarmRule: !Ref alarmrule

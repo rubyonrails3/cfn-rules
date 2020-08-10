@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Code Pipeline Custom Action Type
+Parameters:
+  rolearn:
+    Type: String
+    Description: ARN of Role
+  maxcount:
+    Type: Number
+    Description: The maximum number of artifacts allowed for the action type
+  mincount:
+    Type: Number
+    Description: The minimum number of artifacts allowed for the action type
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  codepipelinecustomactiontype:
+    Type: AWS::CodePipeline::CustomActionType
+    Properties:
+      RoleArn: !Ref rolearn
+      InputArtifactDetails:
+      - MaximumCount: !Ref maxcount
+        MinimumCount: !Ref mincount
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create EKS Cluster
+Parameters:
+  name:
+    Type: String
+    Description: Cluster name
+  rolearn:
+    Type: String
+    Description: IAM Role ARN
+  subnetid:
+    Type: String
+    Description: Subnet ID for worker noder
+Resources:
+  ekscluster:
+    Type: AWS::EKS::Cluster
+    Properties:
+      Name: !Ref name
+      RoleArn: !Ref rolearn
+      ResourcesVpcConfig:
+      - SubnetIds: !Ref subnetid

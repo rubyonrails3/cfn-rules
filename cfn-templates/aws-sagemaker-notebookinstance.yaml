@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Sagemaker Notebook Instance
+Parameters:
+  instancetype:
+    Type: String
+    Description: Instance Type
+  rolearn:
+    Type: String
+    Description: Role ARN
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  sagemakernotebookinstance:
+    Type: AWS::SageMaker::NotebookInstance
+    Properties:
+      InstanceType: !Ref instancetype
+      RoleArn: !Ref rolearn
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

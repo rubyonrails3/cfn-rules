@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Dynamo DB Table
+Parameters:
+  attributename:
+    Type: String
+    Description: Name of Attribute
+  keytype:
+    Type: String
+    Description: Key Type
+    AllowedValues:
+    - HASH
+    - RANGE
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  awsec2SG:
+    Type: AWS::DynamoDB::Table
+    Properties: 
+        KeySchema:
+        - AttributeName: !Ref attributename
+          KeyType: !Ref keytype
+        Tags:
+        - Key: COSTCENTER
+          Value: !Ref costCenterValue
+        - Key: STACKNAME
+          Value: !Ref stackNameValue

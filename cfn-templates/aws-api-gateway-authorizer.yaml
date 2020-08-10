@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create API Gateway Authorizer
+Parameters:
+  name:
+    Type: String
+    Description: API Gateway API Key Name
+  restapiid:
+    Type: String
+    Description: Rest API ID
+  authorizertype:
+    Type: String
+    Description: Type of AUthorizer
+    AllowedValues:
+      - TOKEN
+      - COGNITO_USER_POOLS
+      - REQUEST
+Resources:
+  awsapigwauthorizer:
+    Type: AWS::ApiGateway::Authorizer
+    Properties:
+      Name: !Ref name
+      RestApiId: !Ref restapiid
+      Type: !Ref authorizertype

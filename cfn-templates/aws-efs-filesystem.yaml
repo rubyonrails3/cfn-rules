@@ -1,0 +1,6 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create EFS FIle System
+Resources:
+  awsecstaskset:
+    Type: AWS::EFS::FileSystem
+    #No mandatory properties

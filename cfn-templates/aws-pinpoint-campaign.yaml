@@ -1,0 +1,41 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Pinpoint Campaign
+Parameters:
+  name:
+    Type: String
+    Description: The name of the Campaign
+  applicationid:
+    Type: String
+    Description: Application ID
+  segmentid:
+    Type: String
+    Description: The unique identifier for the segment to associate with the campaign
+  frequency:
+    Type: String
+    Description: Specifies how often the campaign is sent 
+  body:
+    Type: String
+    Description: Body of notification message
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  pinpointcampaign:
+    Type: AWS::Pinpoint::Campaign
+    Properties:
+      Name: !Ref name
+      ApplicationId: !Ref applicationid
+      SegmentId: !Ref segmentid
+      Schedule:
+      - Frequency: !Ref frequency
+      MessageConfiguration:
+      - ADMMessage:
+        - Body: !Ref body
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

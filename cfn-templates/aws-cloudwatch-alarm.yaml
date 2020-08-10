@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Cloud Watch Alarm
+Parameters:
+  evaluationperiods:
+    Type: Number
+    Description: Evaluation Periods
+  comparisonoperator:
+    Type: String
+    Description: Comparison Operator
+    AllowedValues:
+    - GreaterThanOrEqualToThreshold 
+    - GreaterThanThreshold
+    - GreaterThanUpperThreshold
+    - LessThanLowerOrGreaterThanUpperThreshold
+    - LessThanLowerThreshold
+    - LessThanOrEqualToThreshold 
+    - LessThanThreshold
+Resources:
+  awscloudfrontstreamingdistribution:
+    Type: AWS::CloudFront::StreamingDistribution
+    Properties:
+      EvaluationPeriods: !Ref evaluationperiods
+      ComparisonOperator: !Ref comparisonoperator

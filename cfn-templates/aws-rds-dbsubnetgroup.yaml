@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create RDS DB Subnet Group
+Parameters:
+  dbsgdesc:
+    Type: String
+    Description: DB Subnet Group Description
+  subnetid:
+    Type: String
+    Description: List of Subnet IDs for the DB Subnet Group
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  rdsdbSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: !Ref dbsgdesc
+      SubnetIds: !Ref subnetid
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

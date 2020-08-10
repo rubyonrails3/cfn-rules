@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create ELB Listener
+Parameters:
+  lbarn:
+    Type: String
+    Description: ARN of Load Balancer
+  port:
+    Type: Number
+    Description: Port Number
+  protocol:
+    Type: String
+    Description: Protocol
+    AllowedValues:
+    - HTTP 
+    - HTTPS 
+    - TCP 
+    - TCP_UDP 
+    - TLS 
+    - UDP
+  actiontype:
+    Type: String
+    Description: Action Type
+    AllowedValues:
+    - authenticate-cognito 
+    - authenticate-oidc 
+    - fixed-response 
+    - forward 
+    - redirect
+Resources:
+  elblistener:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    Properties:
+      LoadBalancerArn: !Ref lbarn
+      Port: !Ref port
+      Protocol: !Ref protocol
+      DefaultActions:
+      - Type: !Ref actiontype

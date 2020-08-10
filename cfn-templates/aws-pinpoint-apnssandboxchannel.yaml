@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Pinpoint APNS Sandbox Channel
+Parameters:
+  applicationid:
+    Type: String
+    Description: The unique identifier for the application
+Resources:
+  pinpointapnssandboxchannel:
+    Type: AWS::Pinpoint::APNSSandboxChannel
+    Properties:
+      ApplicationId: !Ref applicationid

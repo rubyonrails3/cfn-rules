@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Lambda Function
+Parameters:
+  handler:
+    Type: String
+    Description: The name of the method within your code that Lambda calls to execute your function
+  role:
+    Type: String
+    Description: Role ARN
+  runtime:
+    Type: String
+    Description: Run Time
+  s3bucket:
+    Type: String
+    Description: S3 Bucket
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  lambdafunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Handler: !Ref handler
+      Role: !Ref role
+      Runtime: !Ref runtime
+      Code:
+      - S3Bucket: !Ref s3bucket
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Event Rule
+Parameters:
+  name:
+    Type: String
+    Description: Name of Event Rule
+Resources:
+  eventrule:
+    Type: AWS::Events::Rule
+    Properties:
+      Name: !Ref name

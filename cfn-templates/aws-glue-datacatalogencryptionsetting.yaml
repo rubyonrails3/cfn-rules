@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Glue DataCatalog Encryption Settings
+Parameters:
+  catalogid:
+    Type: String
+    Description: The AWS account ID for the account in which to create the catalog object
+  kmskeyid:
+    Type: String
+    Description: An AWS KMS key that is used to encrypt the connection password
+Resources:
+  gluedatacatalogencryption:
+    Type: AWS::Glue::DataCatalogEncryptionSettings
+    Properties:
+      CatalogId: !Ref catalogid
+      DataCatalogEncryptionSettings:
+      - ConnectionPasswordEncryption:
+        - KmsKeyId: !Ref kmskeyid

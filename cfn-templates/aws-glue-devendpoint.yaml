@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Glue Dev Endpoint
+Parameters:
+  rolearn:
+    Type: String
+    Description: Role ARN
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  gluedevendpoint:
+    Type: AWS::Glue::DevEndpoint
+    Properties:
+      RoleArn: !Ref rolearn
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

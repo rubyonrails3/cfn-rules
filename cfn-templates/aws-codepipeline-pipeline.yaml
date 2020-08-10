@@ -1,0 +1,53 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Code Pipeline
+Parameters:
+  name:
+    Type: String
+    Description: Name of a Code Pipeline
+  rolearn:
+    Type: String
+    Description: Role ARN
+  stagename:
+    Type: String
+    Description: The name of the stage
+  actionname:
+    Type: String
+    Description: The action declaration's name
+  category:
+    Type: String
+    Description: Action Category
+  owner:
+    Type: String
+    Description: Action Owner
+  provider:
+    Type: String
+    Description: Action Provider
+  version:
+    Type: String
+    Description: Action Version
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  awscodepipeline:
+    Type: AWS::CodePipeline::Pipeline
+    Properties: 
+      name: !Ref name
+      RoleArn: !Ref rolearn
+      Stages:
+      - Name: !Ref stagename
+        Actions: 
+        - Name: !Ref actionname
+          ActionTypeId:
+          - Category: !Ref category
+            Owner: !Ref owner
+            Provider: !Ref provider
+            Version: !Ref version
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

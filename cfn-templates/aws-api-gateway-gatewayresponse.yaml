@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create API Gateway Gateway Response
+Parameters:
+  responsetype:
+    Type: String
+    Description: Response Type
+  restapiid:
+    Type: String
+    Description: Rest API ID
+Resources:
+  awsapigwresponse:
+    Type: AWS::ApiGateway::GatewayResponse
+    Properties:
+      ResponseType: !Ref responsetype
+      RestApiId: !Ref restapiid

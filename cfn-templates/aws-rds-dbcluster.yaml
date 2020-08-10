@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create RDS DB CLuster
+Parameters:
+  dbengine:
+    Type: String
+    Description: The name of the database engine
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  rdsdbcluster:
+    Type: AWS::RDS::DBCluster
+    Properties:
+      Engine: !Ref dbengine
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

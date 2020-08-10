@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create API Gateway Base Path mapping
+Parameters:
+  domainname:
+    Type: String
+    Description: Domain Name 
+Resources:
+  awsapigwbasepathmapping:
+    Type: AWS::ApiGateway::BasePathMapping
+    Properties:
+      DomainName: !Ref domainname

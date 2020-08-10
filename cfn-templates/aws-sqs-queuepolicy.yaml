@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create SQS Queue Policy
+Parameters:
+  policydocument:
+    Type: String
+    Description: A Policy Document
+  queues:
+    Type: String
+    Description: The URLs of the queues
+Resources:
+  sqspolicypolicy:
+    Type: AWS::SQS::QueuePolicy
+    Properties:
+      PolicyDocument: !Ref policydocument
+      Queues: !Ref queues

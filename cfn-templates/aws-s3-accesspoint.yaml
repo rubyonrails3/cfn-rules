@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create S3 Access Point
+Parameters:
+  name:
+    Type: String
+    Description: The name of this access point
+  bucket:
+    Type: String
+    Description: Name of Bucket
+Resources:
+  s3accesspoint:
+    Type: AWS::S3::AccessPoint
+    Properties:
+      Name: !Ref name
+      Bucket: !Ref bucket

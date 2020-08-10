@@ -1,0 +1,6 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Logs Group
+Resources:
+  loggroup:
+    Type: AWS::Logs::LogGroup
+    #No mandatory Properties

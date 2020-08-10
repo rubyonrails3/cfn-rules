@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Pinpoint Email Template
+Parameters:
+  subject:
+    Type: String
+    Description: The subject line, or title
+  templatename:
+    Type: String
+    Description: Template Name
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  pinpointemailtemplate:
+    Type: AWS::Pinpoint::EmailTemplate
+    Properties:
+      Subject: !Ref subject
+      TemplateName: !Ref templatename
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

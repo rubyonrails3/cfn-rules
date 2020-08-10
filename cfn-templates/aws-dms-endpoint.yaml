@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create DMS Endpoint
+Parameters:
+  endpointtype:
+    Type: String
+    Description: Endpoint Type
+    AllowedValues:
+    - source
+    - target
+  enginename:
+    Type: String
+    Description: Engine Name
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  awsdmsendpoint:
+    Type: AWS::DMS::Endpoint
+    Properties: 
+        EndpointType: !Ref endpointtype
+        EngineName: !Ref enginename
+        Tags:
+        - Key: COSTCENTER
+          Value: !Ref costCenterValue
+        - Key: STACKNAME
+          Value: !Ref stackNameValue

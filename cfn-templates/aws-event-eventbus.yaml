@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Event Bus
+Parameters:
+  name:
+    Type: String
+    Description: Name of Event Bus
+Resources:
+  eventbus:
+    Type: AWS::Events::EventBus
+    Properties:
+      Name: !Ref name

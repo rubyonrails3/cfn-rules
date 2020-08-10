@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create DAX Cluster
+Parameters:
+  iamrolearn:
+    Type: String
+    Description: IAM Role ARN
+  nodetype:
+    Type: String
+    Description: Node Type
+  replicationfactor:
+    Type: Number
+    Description: Replication Factor
+Resources:
+  awsdaxcluster:
+    Type: AWS::DAX::Cluster
+    Properties:
+      IAMRoleARN: !Ref iamrolearn
+      NodeType: !Ref nodetype
+      ReplicationFactor: !Ref replicationfactor

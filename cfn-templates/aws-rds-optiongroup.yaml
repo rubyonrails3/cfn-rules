@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create RDS Option Group
+Parameters:
+  enginename:
+    Type: String
+    Description: Specifies the name of the engine
+  majorengineversion:
+    Type: String
+    Description: Specifies the major version of the engine
+  optiongroupdescription:
+    Type: String
+    Description: The description of the option group
+  optionname:
+    Type: String
+    Description: Option Name
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  rdsoptiongroup:
+    Type: AWS::RDS::OptionGroup
+    Properties:
+      EngineName: !Ref enginename
+      MajorEngineVersion: !Ref majorengineversion
+      OptionGroupDescription: !Ref optiongroupdescription
+      OptionConfigurations:
+      - OptionName: !Ref optionname
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

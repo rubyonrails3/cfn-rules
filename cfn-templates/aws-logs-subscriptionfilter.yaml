@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Logs Subscription Filter
+Parameters:
+  destinationarn:
+    Type: String
+    Description: Destination ARN
+  filterpattern:
+    Type: String
+    Description: Filter Pattern
+  loggroupname:
+    Type: String
+    Description: Log Group Name
+Resources:
+  logssubscriptionfilter:
+    Type: AWS::Logs::SubscriptionFilter
+    Properties:
+      DestinationArn: !Ref destinationarn
+      FilterPattern: !Ref filterpattern
+      LogGroupName: !Ref loggroupname

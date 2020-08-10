@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create ECS Primary Task Set
+Parameters:
+  cluster:
+    Type: String
+    Description: Cluster
+  service:
+    Type: String
+    Description: Service
+  tasksetid:
+    Type: String
+    Description: Task Set ID
+Resources:
+  awsecsprimarytaskset:
+    Type: AWS::ECS::PrimaryTaskSet
+    Properties:
+      Cluster: !Ref cluster
+      Service: !Ref service
+      TaskSetId: !Ref tasksetid

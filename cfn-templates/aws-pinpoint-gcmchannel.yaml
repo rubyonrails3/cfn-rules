@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Pinpoint GCM Channel
+Parameters:
+  applicationid:
+    Type: String
+    Description: An application ID
+  apikey:
+    Type: String
+    Description: API Key
+Resources:
+  pinpointgcmchannel:
+    Type: AWS::Pinpoint::GCMChannel
+    Properties:
+      ApplicationId: !Ref applicationid
+      ApiKey: !Ref apikey

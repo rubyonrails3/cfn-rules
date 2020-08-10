@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create API Gateway Rest API
+Parameters:
+  name:
+    Type: String
+    Description: Amplify App name
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  awsapigwrestapi:
+    Type: AWS::ApiGateway::RestApi
+    Properties: 
+        Name: !Ref name
+        Tags:
+        - Key: COSTCENTER
+          Value: !Ref costCenterValue
+        - Key: STACKNAME
+          Value: !Ref stackNameValue

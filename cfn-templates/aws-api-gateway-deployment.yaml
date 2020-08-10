@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create API Gateway Deployment
+Parameters:
+  restapiid:
+    Type: String
+    Description: Rest API ID
+Resources:
+  apigwdeployment:
+    Type: AWS::ApiGateway::Deployment
+    Properties:
+      RestApiId: !Ref restapiid

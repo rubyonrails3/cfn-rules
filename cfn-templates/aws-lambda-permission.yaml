@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Lambda Permission
+Parameters:
+  action:
+    Type: String
+    Description: Action
+  functionname:
+    Type: String
+    Description: ARN of Layer Version
+  principal:
+    Type: String
+    Description: Account ID
+Resources:
+  lambdapermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: !Ref action
+      FunctionName: !Ref functionname
+      Principal: !Ref principal

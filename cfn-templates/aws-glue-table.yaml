@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Glue table
+Parameters:
+  catalogid:
+    Type: String
+    Description: Catalog ID
+  databasename:
+    Type: String
+    Description: Database Name
+  tablename:
+    Type: String
+    Description: Table Name
+Resources:
+  gluetable:
+    Type: AWS::Glue::Table
+    Properties:
+      CatalogId: !Ref catalogid
+      DatabaseName: !Ref databasename
+      TableInput:
+      - Name: !Ref tablename

@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Cognito Identity Pool Role Attachment
+Parameters:
+  identitypoolid:
+    Type: String
+    Description: An identity pool ID in the format REGION:GUID
+Resources:
+  awscognitoidentitypoolroleattachment:
+    Type: AWS::Cognito::IdentityPoolRoleAttachment
+    Properties: 
+      IdentityPoolId: !Ref identitypoolid

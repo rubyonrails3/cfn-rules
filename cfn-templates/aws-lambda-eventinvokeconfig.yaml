@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Lambda Event Invoke Config
+Parameters:
+  functionname:
+    Type: String
+    Description: Function Name
+  qualifier:
+    Type: String
+    Description: Qualifier
+Resources:
+  lambdeventinvokeconfig:
+    Type: AWS::Lambda::EventInvokeConfig
+    Properties:
+      FunctionName: !Ref functionname
+      Qualifier: !Ref qualifier

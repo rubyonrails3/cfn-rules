@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Lambda Version
+Parameters:
+  functionname:
+    Type: String
+    Description: ARN of Layer Version
+Resources:
+  lambdaversion:
+    Type: AWS::Lambda::Version
+    Properties:
+      FunctionName: !Ref functionname

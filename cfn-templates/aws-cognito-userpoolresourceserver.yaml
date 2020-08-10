@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Cognito User Pool Resource Server
+Parameters:
+  name:
+    Type: String
+    Description: The Resource Server name
+  identifier:
+    Type: String
+    Description: Identifier
+  userpoolid:
+    Type: String
+    Description: The user pool ID
+Resources:
+  awscognitouserpoolresourceserver:
+    Type: AWS::Cognito::UserPoolResourceServer
+    Properties: 
+      Name: !Ref name
+      Identifier: !Ref identifier
+      UserPoolId: !Ref userpoolid

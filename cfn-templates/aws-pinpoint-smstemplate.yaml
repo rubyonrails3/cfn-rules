@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Pinpoint SMS Template
+Parameters:
+  body:
+    Type: String
+    Description: Message Body
+  templatename:
+    Type: String
+    Description: Name of Template
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  pinpointsmstemplate:
+    Type: AWS::Pinpoint::SmsTemplate
+    Properties:
+      Body: !Ref body
+      TemplateName: !Ref templatename
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

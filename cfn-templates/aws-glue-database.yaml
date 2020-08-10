@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Glue DB
+Parameters:
+  catalogid:
+    Type: String
+    Description: The AWS account ID for the account in which to create the catalog object
+  name:
+    Type: String
+    Description: Name of DB
+Resources:
+  gluedatabase:
+    Type: AWS::Glue::Database
+    Properties:
+      CatalogId: !Ref catalogid
+      DatabaseInput:
+      - Name: !Ref name

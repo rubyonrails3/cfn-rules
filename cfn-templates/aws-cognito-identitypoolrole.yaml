@@ -1,0 +1,14 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Cognito Identity Pool
+Parameters:
+  allowunauthenticatedidentities:
+    Type: String
+    Description: Specifies whether the identity pool supports unauthenticated logins
+    AllowedValues:
+    - true
+    - false
+Resources:
+  awscognitoidentitypool:
+    Type: AWS::Cognito::IdentityPool
+    Properties: 
+      AllowUnauthenticatedIdentities: !Ref allowunauthenticatedidentities

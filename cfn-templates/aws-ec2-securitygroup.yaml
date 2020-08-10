@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create EC2 Security Group
+Parameters:
+  groupdescription:
+    Type: String
+    Description: Group Description
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  awsec2SG:
+    Type: AWS::EC2::SecurityGroup
+    Properties: 
+        GroupDescription: !Ref groupdescription
+        Tags:
+        - Key: COSTCENTER
+          Value: !Ref costCenterValue
+        - Key: STACKNAME
+          Value: !Ref stackNameValue

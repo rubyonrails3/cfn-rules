@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Cloud Front Distribution
+Parameters:
+  enabled:
+    Type: String
+    Description: Enable/Disable cloud front distribution
+    AllowedValues:
+      - true
+      - false
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  awscloudfrontdistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties: 
+        DistributionConfig:
+        - Enabled: !Ref enabled
+        Tags:
+        - Key: COSTCENTER
+          Value: !Ref costCenterValue
+        - Key: STACKNAME
+          Value: !Ref stackNameValue

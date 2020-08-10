@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Pinpoint APP
+Parameters:
+  name:
+    Type: String
+    Description: The name of the Pinpoint
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  pinpointapp:
+    Type: AWS::Pinpoint::App
+    Properties:
+      Name: !Ref name
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

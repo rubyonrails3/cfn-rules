@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Cloud Deploy Deployment Group
+Parameters:
+  applicationname:
+    Type: String
+    Description: Name of an existing CodeDeploy application
+  servicerolearn:
+    Type: String
+    Description: A service role Amazon Resource Name (ARN)
+Resources:
+  awscodedeploydeploymentgroup:
+    Type: AWS::CodeDeploy::DeploymentGroup
+    Properties:
+      ApplicationName: !Ref applicationname
+      ServiceRoleArn: !Ref servicerolearn

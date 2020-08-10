@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Pinpoint SMS Template
+Parameters:
+  applicationid:
+    Type: String
+    Description: Application ID
+Resources:
+  pinpointvoicechannel:
+    Type: AWS::Pinpoint::VoiceChannel
+    Properties:
+      ApplicationId: !Ref applicationid

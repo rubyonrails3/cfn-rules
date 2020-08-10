@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create DMS Event Subscription
+Parameters:
+  snstopicarn:
+    Type: String
+    Description: SNS Topic ARN
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  awsdmseventsubscription:
+    Type: AWS::DMS::EventSubscription
+    Properties: 
+        SnsTopicArn: !Ref snstopicarn
+        Tags:
+        - Key: COSTCENTER
+          Value: !Ref costCenterValue
+        - Key: STACKNAME
+          Value: !Ref stackNameValue

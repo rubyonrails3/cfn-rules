@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Lambda Layer Version Permission
+Parameters:
+  action:
+    Type: String
+    Description: Action
+  layerversionarn:
+    Type: String
+    Description: ARn of Layer Version
+  principal:
+    Type: String
+    Description: Account ID
+Resources:
+  lambdalayerversionpermission:
+    Type: AWS::Lambda::LayerVersionPermission
+    Properties:
+      Action: !Ref action
+      LayerVersionArn: !Ref layerversionarn
+      Principal: !Ref principal

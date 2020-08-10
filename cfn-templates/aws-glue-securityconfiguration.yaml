@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Glue Security Configuration
+Parameters:
+  name:
+    Type: String
+    Description: Name of Security Configuration
+  encryptionmode:
+    Type: String
+    Description: The encryption mode to use for CloudWatch data
+Resources:
+  glueworkflow:
+    Type: AWS::Glue::SecurityConfiguration
+    Properties:
+      Name: !Ref name
+      EncryptionConfiguration:
+      - CloudWatchEncryption:
+        - CloudWatchEncryptionMode: !Ref encryptionmode
+      

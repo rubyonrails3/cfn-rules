@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Cognito User Pool Group
+Parameters:
+  userpoolid:
+    Type: String
+    Description: The user pool ID
+Resources:
+  awscognitouserpoolgroup:
+    Type: AWS::Cognito::UserPoolGroup
+    Properties: 
+      UserPoolId: !Ref userpoolid

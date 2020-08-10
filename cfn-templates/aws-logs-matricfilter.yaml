@@ -1,0 +1,28 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Logs Metric FIlter
+Parameters:
+  filterpattern:
+    Type: String
+    Description: A filter pattern
+  loggroupname:
+    Type: String
+    Description: Log Group Name
+  metricname:
+    Type: String
+    Description: Name of Metric
+  metricnamespace:
+    Type: String
+    Description: Metric Name Space
+  metricvalue:
+    Type: String
+    Description: Metric Value
+Resources:
+  logsmetricfilter:
+    Type: AWS::Logs::MetricFilter
+    Properties:
+      FilterPattern: !Ref filterpattern
+      LogGroupName: !Ref loggroupname
+      MetricTransformations:
+      - MetricName: !Ref metricname
+        MetricNamespace: !Ref metricnamespace
+        MetricValue: !Ref metricvalue

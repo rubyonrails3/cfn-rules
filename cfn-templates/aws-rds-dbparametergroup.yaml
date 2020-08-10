@@ -1,0 +1,26 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create RDS DB Parameter Group
+Parameters:
+  description:
+    Type: String
+    Description: Provides the customer-specified description for this DB Parameter Group
+  family:
+    Type: String
+    Description: DB Parameter Group Family
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  rdsdbparametergroup:
+    Type: AWS::RDS::DBParameterGroup
+    Properties:
+      Description: !Ref description
+      Family: !Ref family
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

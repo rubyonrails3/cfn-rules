@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create EKS Node Group
+Parameters:
+  clustername:
+    Type: String
+    Description: Name of Cluster
+  noderole:
+    Type: String
+    Description: noderole
+  subnets:
+    Type: String
+    Description: List of subnet
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  eksnodegroup:
+    Type: AWS::EKS::Nodegroup
+    Properties:
+      ClusterName: !Ref clustername
+      NodeRole: !Ref noderole
+      Subnets: !Ref subnets
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

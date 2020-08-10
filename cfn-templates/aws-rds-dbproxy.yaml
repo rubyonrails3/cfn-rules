@@ -1,0 +1,42 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create RDS DB Proxy
+Parameters:
+  dbproxyname:
+    Type: String
+    Description: The identifier for the proxy
+  enginefamily:
+    Type: String
+    Description: The kinds of databases that the proxy can connect to
+    AllowedValues:
+    - MYSQL
+    - POSTGRESQL
+  rolearn:
+    Type: String
+    Description: ARN of IAM Role
+  vpcsubnetid:
+    Type: String
+    Description: VPC Subnet ID
+  username:
+    Type: String
+    Description: DB User Name
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  rdsdbproxy:
+    Type: AWS::RDS::DBProxy
+    Properties:
+      DBProxyName: !Ref dbproxyname
+      EngineFamily: !Ref enginefamily
+      RoleArn: !Ref rolearn
+      VpcSubnetIds: !Ref vpcsubnetid
+      Auth:
+      - UserName: !Ref username
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

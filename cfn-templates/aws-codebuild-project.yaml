@@ -1,0 +1,72 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Code Build Project
+Parameters:
+  name:
+    Type: String
+    Description: Name of Project
+  artifacttype:
+    Type: String
+    Description: Artifact Type
+    AllowedValues:
+    - CODEPIPELINE
+    - NO_ARTIFACTS
+    - S3
+  computetype:
+    Type: String
+    Description: Compute Type
+  image:
+    Type: String
+    Description: Image
+  envtype:
+    Type: String
+    Description: Type of build environment
+    AllowedValues: 
+    - ARM_CONTAINER 
+    - LINUX_CONTAINER 
+    - LINUX_GPU_CONTAINER 
+    - WINDOWS_CONTAINER
+    - WINDOWS_SERVER_2019_CONTAINER
+  servicerole:
+    Type: String
+    Description: Service Role ARN
+  sourcetype:
+    Type: String
+    Description: Source Type
+    AllowedValues: 
+    - BITBUCKET 
+    - CODECOMMIT 
+    - CODEPIPELINE 
+    - GITHUB 
+    - GITHUB_ENTERPRISE 
+    - NO_SOURCE 
+    - S3
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  awscodebuildproject:
+    Type: AWS::CodeBuild::Project
+    Properties: 
+      name: !Ref name
+
+      Artifacts:
+      - Type: !Ref artifacttype
+
+      Environment:
+      - ComputeType: !Ref computetype
+        Image: !Ref image
+        Type: !Ref envtype
+
+      ServiceRole: !Ref servicerole
+
+      Source:
+      - Type: !Ref sourcetype
+
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

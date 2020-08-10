@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create RDS Event Subscription
+Parameters:
+  snstopicarn:
+    Type: String
+    Description: SNS Topic ARN
+Resources:
+  rdseventsubscription:
+    Type: AWS::RDS::EventSubscription
+    Properties:
+      SnsTopicArn: !Ref snstopicarn

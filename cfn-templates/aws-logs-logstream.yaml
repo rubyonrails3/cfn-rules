@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Logs Stream
+Parameters:
+  loggroupname:
+    Type: String
+    Description: Log Group Name
+Resources:
+  logstream:
+    Type: AWS::Logs::LogStream
+    Properties:
+      LogGroupName: !Ref loggroupname

@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Pinpoint Email Channel
+Parameters:
+  fromaddress:
+    Type: String
+    Description: The verified email address
+  applicationid:
+    Type: String
+    Description: Application ID
+  identity:
+    Type: String
+    Description: ARN of Identity
+Resources:
+  pinpoinemailchannel:
+    Type: AWS::Pinpoint::EmailChannel
+    Properties:
+      FromAddress: !Ref fromaddress
+      ApplicationId: !Ref applicationid
+      Identity: !Ref identity

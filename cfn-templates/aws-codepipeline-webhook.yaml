@@ -1,0 +1,41 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Codepoipline Webhook
+Parameters:
+  name:
+    Type: String
+    Description: Name of the webhook
+  authentication:
+    Type: String
+    Description: Authentication
+    AllowedValues:
+    - GITHUB_HMAC
+    - IP
+    - UNAUTHENTICATED
+  allowediprange:
+    Type: String
+    Description: The property used to configure acceptance of webhooks in an IP address range
+  jsonpath:
+    Type: String
+    Description: JsonPath expression
+  targetaction:
+    Type: String
+    Description: The name of the action in a pipeline you want to connect to the webhook
+  targetpipeline:
+    Type: String
+    Description: The name of the pipeline you want to connect to the webhook
+  targetpipelineversion:
+    Type: String
+    Description: The version number of the pipeline
+Resources:
+  codepipelinewebhook:
+    Type: AWS::CodePipeline::Webhook
+    Properties:
+      Name: !Ref name
+      Authentication: !Ref authentication
+      TargetAction: !Ref targetaction
+      TargetPipeline: !Ref targetpipeline
+      TargetPipelineVersion: !Ref targetpipelineversion
+      AuthenticationConfiguration:
+      - AllowedIPRange: !Ref allowediprange
+      Filters:
+      - JsonPath: !Ref jsonpath

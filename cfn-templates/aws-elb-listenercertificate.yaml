@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create ELB Listener Certificate
+Parameters:
+  listenerarn:
+    Type: String
+    Description: ARN of listener
+  certificatearn:
+    Type: String
+    Description: ARN of Certificate
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  elblistenercertificate:
+    Type: AWS::ElasticLoadBalancingV2::ListenerCertificate
+    Properties:
+      ListenerArn: !Ref listenerarn
+      Certificates:
+      - CertificateArn: !Ref certificatearn
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

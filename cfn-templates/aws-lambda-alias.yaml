@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Lambda Alias
+Parameters:
+  name:
+    Type: String
+    Description: Name of Lambda Alias
+  functionname:
+    Type: String
+    Description: Function Name
+  functionversion:
+    Type: String
+    Description: Function Version
+Resources:
+  lambdaalias:
+    Type: AWS::Lambda::Alias
+    Properties:
+      Name: !Ref name
+      FunctionName: !Ref functionname
+      FunctionVersion: !Ref functionversion

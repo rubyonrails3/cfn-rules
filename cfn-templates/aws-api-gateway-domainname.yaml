@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create API Gateway Domain Name
+Parameters:
+  domainname:
+    Type: String
+    Description: API Gateway Domain Name
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  awsapigwdomainname:
+    Type: AWS::ApiGateway::DomainName
+    Properties:
+      DomainName: !Ref domainname
+      Tags:
+        - Key: COSTCENTER
+          Value: !Ref costCenterValue
+        - Key: STACKNAME
+          Value: !Ref stackNameValue

@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create EC2 Security Group Ingress
+Parameters:
+  ipprotocol:
+    Type: String
+    Description: IP Protocol
+Resources:
+  awsec2sgingress:
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties: 
+        IpProtocol: !Ref ipprotocol

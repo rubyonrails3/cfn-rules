@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create API Gateway Usages Plan Key
+Parameters:
+  keyid:
+    Type: String
+    Description: Key ID
+  keytype:
+    Type: String
+    Description: Key Type
+  usagesplanid:
+    Type: String
+    Description: Key Type
+Resources:
+  awsapigwusagesplankey:
+    Type: AWS::ApiGateway::UsagePlanKey
+    Properties:
+        KeyId: !Ref keyid
+        KeyType: !Ref keytype
+        UsagePlanId: !Ref usagesplanid

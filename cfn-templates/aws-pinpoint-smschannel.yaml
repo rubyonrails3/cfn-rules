@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Pinpoint SMS Channel
+Parameters:
+  applicationid:
+    Type: String
+    Description: Application ID
+Resources:
+  pinpointsmschannel:
+    Type: AWS::Pinpoint::SMSChannel
+    Properties:
+      ApplicationId: !Ref applicationid

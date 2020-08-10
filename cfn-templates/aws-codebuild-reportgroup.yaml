@@ -1,0 +1,36 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Code Build ReportGroup
+Parameters:
+  name:
+    Type: String
+    Description: Name of a ReportGroup
+  type:
+    Type: String
+    Description: Type of the ReportGroup
+    AllowedValues: 
+    - TEST
+  exportconfigtype:
+    Type: String
+    Description: Export Configuration Type
+    AllowedValues:
+    - NO_EXPORT
+    - S3
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  awscodebuildreportgroup:
+    Type: AWS::CodeBuild::ReportGroup
+    Properties: 
+      name: !Ref name
+      Type: !Ref type
+      ExportConfig:
+      - ExportConfigType: !Ref exportconfigtype
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

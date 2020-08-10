@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Event Bus Policy
+Parameters:
+  action:
+    Type: String
+    Description: The action that you are enabling the other account to perform
+  principal:
+    Type: String
+    Description: AWS account ID
+  statementid:
+    Type: String
+    Description: An identifier string for the external account that you're granting permissions to
+Resources:
+  eventbuspolicy:
+    Type: AWS::Events::EventBusPolicy
+    Properties:
+      Action: !Ref action
+      Principal: !Ref principal
+      StatementId: !Ref statementid

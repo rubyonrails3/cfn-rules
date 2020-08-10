@@ -1,0 +1,47 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Cloud Front Streaming Distribution
+Parameters:
+  streamenabled:
+    Type: String
+    Description: Enable/Disable Streaming distribution
+    AllowedValues:
+      - true
+      - false
+  trustenable:
+    Type: String
+    Description: Require viewers to use signed URLs to access the files specified by PathPattern and TargetOriginId.
+    AllowedValues:
+      - true
+      - false
+  comment:
+    Type: String
+    Description: Comment
+  domainname:
+    Type: String
+    Description: Domain Name
+  originaccessidentity:
+    Type: String
+    Description: Origin AccesscIdentity
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  awscloudfrontstreamingdistribution:
+    Type: AWS::CloudFront::StreamingDistribution
+    Properties: 
+        StreamingDistributionConfig:
+        - Enabled: !Ref streamenabled
+          Comment: !Ref comment
+          S3Origin:
+          - DomainName: !Ref domainname
+            OriginAccessIdentity: !Ref originaccessidentity
+          TrustedSigners:
+          - Enabled: !Ref trustenable
+        Tags:
+        - Key: COSTCENTER
+          Value: !Ref costCenterValue
+        - Key: STACKNAME
+          Value: !Ref stackNameValue

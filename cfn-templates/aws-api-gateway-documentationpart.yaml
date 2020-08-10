@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create API Gateway Documentation Part
+Parameters:
+  restapiid:
+    Type: String
+    Description: Rest API ID
+  properties:
+    Type: String
+    Description: The documentation content map of the targeted API entity
+  name:
+    Type: String
+    Description: The name of the targeted API entity
+Resources:
+  apigwdocumentationpart:
+    Type: AWS::ApiGateway::DocumentationPart
+    Properties:
+      RestApiId: !Ref restapiid
+      Properties: !Ref properties
+      Location:
+        - Name: !Ref name

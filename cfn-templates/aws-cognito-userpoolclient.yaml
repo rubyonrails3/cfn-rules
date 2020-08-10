@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Cognito User Pool Client
+Parameters:
+  userpoolid:
+    Type: String
+    Description: The user pool ID for the user pool where you want to create a user pool client
+Resources:
+  awscognitouserpoolclient:
+    Type: AWS::Cognito::UserPoolClient
+    Properties: 
+      UserPoolId: !Ref userpoolid

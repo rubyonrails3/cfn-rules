@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create API Gateway Resource
+Parameters:
+  parentid:
+    Type: String
+    Description: Parent ID
+  pathpart:
+    Type: String
+    Description: Path Part
+  restapiid:
+    Type: String
+    Description: Rest API ID
+Resources:
+  awsapigwresource:
+    Type: AWS::ApiGateway::Resource
+    Properties:
+      ParentId: !Ref parentid
+      PathPart: !Ref pathpart
+      RestApiId: !Ref restapiid

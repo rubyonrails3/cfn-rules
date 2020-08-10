@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create RDS DB Proxy Target Group
+Parameters:
+  dbproxyname:
+    Type: String
+    Description: The identifier of the DBProxy
+  tgname:
+    Type: String
+    Description: The identifier for the target group
+Resources:
+  rdsdbproxyTG:
+    Type: AWS::RDS::DBParameterGroup
+    Properties:
+      DBProxyName: !Ref dbproxyname
+      TargetGroupName: !Ref tgname

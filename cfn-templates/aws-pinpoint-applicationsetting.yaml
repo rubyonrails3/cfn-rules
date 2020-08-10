@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Pinpoint APP
+Parameters:
+  applicationid:
+    Type: String
+    Description: An Application ID
+Resources:
+  pinpointappsetting:
+    Type: AWS::Pinpoint::ApplicationSettings
+    Properties:
+      ApplicationId: !Ref applicationid

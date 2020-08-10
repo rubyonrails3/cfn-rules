@@ -1,0 +1,42 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create DMS Replication Task
+Parameters:
+  migrationtype:
+    Type: String
+    Description: Type of Migration
+    AllowedValues:
+    - cdc 
+    - full-load 
+    - full-load-and-cdc
+  replicationinstancearn:
+    Type: String
+    Description: ARN of a replication instance
+  sourceendpointarn:
+    Type: String
+    Description: ARN that uniquely identifies the source endpoint
+  tablemapping:
+    Type: String
+    Description: The table mappings for the task
+  targetendpointarn:
+    Type: String
+    Description: ARN of Target Endpoint
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  awsdmsreplicationtask:
+    Type: AWS::DMS::ReplicationTask
+    Properties: 
+        MigrationType: !Ref migrationtype
+        ReplicationInstanceArn: !Ref replicationinstancearn
+        SourceEndpointArn: !Ref sourceendpointarn
+        TableMappings: !Ref tablemapping
+        TargetEndpointArn: !Ref targetendpointarn
+        Tags:
+        - Key: COSTCENTER
+          Value: !Ref costCenterValue
+        - Key: STACKNAME
+          Value: !Ref stackNameValue

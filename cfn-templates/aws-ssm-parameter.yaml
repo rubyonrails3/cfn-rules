@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create SSM Parameter
+Parameters:
+  name:
+    Type: String
+    Description: The name of the parameter
+  type:
+    Type: String
+    Description: The type of parameter
+  value:
+    Type: String
+    Description: The parameter value
+  costCenterValue:
+    Type: String
+    Description: COSTCENTER tag value
+  stackNameValue:
+    Type: String
+    Description: STACKNAME tag value
+Resources:
+  ssmparameter:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Ref name
+      Type: !Ref type
+      Value: !Ref value
+      Tags:
+      - Key: COSTCENTER
+        Value: !Ref costCenterValue
+      - Key: STACKNAME
+        Value: !Ref stackNameValue

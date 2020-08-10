@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create SNS Subscription
+Parameters:
+  protocol:
+    Type: String
+    Description: The subscription's protocol
+  topicarn:
+    Type: String
+    Description: Topic ARN
+Resources:
+  snssubscription:
+    Type: AWS::SNS::Subscription
+    Properties:
+      Protocol: !Ref protocol
+      TopicArn: !Ref topicarn

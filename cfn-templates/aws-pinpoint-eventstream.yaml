@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create Pinpoint Event Stream
+Parameters:
+  applicationid:
+    Type: String
+    Description: An application ID
+  destinationstreamarn:
+    Type: String
+    Description: Destination Stream Arn
+  rolearn:
+    Type: String
+    Description: ARN of Role
+Resources:
+  pinpointeventstream:
+    Type: AWS::Pinpoint::EventStream
+    Properties:
+      ApplicationId: !Ref applicationid
+      DestinationStreamArn: !Ref destinationstreamarn
+      RoleArn: !Ref rolearn

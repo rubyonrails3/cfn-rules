@@ -1,0 +1,7 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create CodeDeploy Deployment Config
+
+Resources:
+  codedeploydeploymentconfig:
+    Type: AWS::CodeDeploy::DeploymentConfig
+    # No required  properties

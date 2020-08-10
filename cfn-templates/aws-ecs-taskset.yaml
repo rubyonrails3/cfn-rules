@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create ECS Task Set
+Parameters:
+  cluster:
+    Type: String
+    Description: Cluster
+  service:
+    Type: String
+    Description: Service
+  taskdefinition:
+    Type: String
+    Description: Task Definition
+Resources:
+  awsecstaskset:
+    Type: AWS::ECS::TaskSet
+    Properties:
+      Cluster: !Ref cluster
+      Service: !Ref service
+      TaskDefinition: !Ref taskdefinition

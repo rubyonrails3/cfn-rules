@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Create RDS DB Security Group Ingress
+Parameters:
+  dbsgname:
+    Type: String
+    Description: The name of the DB Security Group
+Resources:
+  rdsdbproxyTG:
+    Type: AWS::RDS::DBSecurityGroupIngress
+    Properties:
+      DBSecurityGroupName: !Ref dbsgname
