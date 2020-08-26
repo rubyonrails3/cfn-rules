@@ -13,6 +13,6 @@ Resources:
     Properties:
       Tags:
       - Key: COSTCENTER
-        Value: !Ref costCenterValue
+        Value: 
       - Key: STACKNAME
         Value: !Ref stackNameValue
