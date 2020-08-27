@@ -6,13 +6,13 @@ Parameters:
     Description: COSTCENTER tag value
   stackNameValue:
     Type: String
-    Description: STACKNAME tag value
+    Description: STACK tag value
 Resources:
   s3bucket:
     Type: AWS::S3::Bucket
     Properties:
       Tags:
       - Key: COSTCENTER
-        Value: 
-      - Key: STACKNAME
+        Value: 'value;'
+      - Key: STACK
         Value: !Ref stackNameValue

@@ -12,7 +12,7 @@ Parameters:
     Description: COSTCENTER tag value
   stackNameValue:
     Type: String
-    Description: STACKNAME tag value
+    Description: STACK tag value
 Resources:
   rdsdbsecuritygroup:
     Type: AWS::RDS::DBSecurityGroup
@@ -23,5 +23,5 @@ Resources:
       Tags:
       - Key: COSTCENTER
         Value: !Ref costCenterValue
-      - Key: STACKNAME
+      - Key: STACK
         Value: !Ref stackNameValue

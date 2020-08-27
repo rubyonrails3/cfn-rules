@@ -6,7 +6,7 @@ Parameters:
     Description: COSTCENTER tag value
   stackNameValue:
     Type: String
-    Description: STACKNAME tag value
+    Description: STACK tag value
 Resources:
   awsapigwusagesplan:
     Type: AWS::ApiGateway::UsagePlan
@@ -14,5 +14,5 @@ Resources:
         Tags:
         - Key: COSTCENTER
           Value: !Ref costCenterValue
-        - Key: STACKNAME
+        - Key: STACK
           Value: !Ref stackNameValue

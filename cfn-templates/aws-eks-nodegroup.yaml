@@ -15,7 +15,7 @@ Parameters:
     Description: COSTCENTER tag value
   stackNameValue:
     Type: String
-    Description: STACKNAME tag value
+    Description: STACK tag value
 Resources:
   eksnodegroup:
     Type: AWS::EKS::Nodegroup
@@ -26,5 +26,5 @@ Resources:
       Tags:
       - Key: COSTCENTER
         Value: !Ref costCenterValue
-      - Key: STACKNAME
+      - Key: STACK
         Value: !Ref stackNameValue

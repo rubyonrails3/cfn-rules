@@ -23,13 +23,8 @@ class UnumDescriptionRule < CfnNag::BaseRule
 
   def audit_impl(cfn_model)
     file_description = cfn_model.raw_model['Description']
-    validation_errors =  []
-    cfn_model.parameters.each_pair do |parameter, value|
-      validation_errors << "#{parameter} value is nil" if value.description.nil?
-    end
-
     violating_domains = cfn_model.resources_by_type(resource_type).select do |app|
-      if validation_errors.length == 0 and !file_description.nil?
+      if !file_description.nil?
         false
       else
         puts validation_errors

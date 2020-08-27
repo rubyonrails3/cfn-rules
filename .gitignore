@@ -1,1 +1,4 @@
 .DS_Store
+lib/unum-rules/template.rb
+./description_rules_writer.rb
+./write_rule.rb
