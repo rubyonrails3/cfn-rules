@@ -24,12 +24,7 @@ class UnumDescriptionRule < CfnNag::BaseRule
   def audit_impl(cfn_model)
     file_description = cfn_model.raw_model['Description']
     violating_domains = cfn_model.resources_by_type(resource_type).select do |app|
-      if !file_description.nil?
-        false
-      else
-        puts validation_errors
-        true
-      end
+      file_description.nil?
     end
     violating_domains.map(&:logical_resource_id)
   end
